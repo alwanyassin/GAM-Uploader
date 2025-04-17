@@ -94,9 +94,16 @@ async function uploadFile() {
 function copyToClipboard() {
   const outputTextarea = document.getElementById('outputScript');
   outputTextarea.select();
-  outputTextarea.setSelectionRange(0, 99999); // For mobile devices
+  outputTextarea.setSelectionRange(0, 99999); // For mobile
 
   document.execCommand('copy');
 
-  alert('Script berhasil disalin ke clipboard!');
+  // Show snackbar
+  const snackbar = document.getElementById('snackbar');
+  snackbar.classList.add('show');
+
+  setTimeout(() => {
+    snackbar.classList.remove('show');
+  }, 3000); // Hilang setelah 3 detik
 }
+
