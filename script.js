@@ -57,7 +57,7 @@ async function uploadFile() {
     const data = await res.json();
 
     if (res.ok) {
-      const fileUrl = `https://${repo.split('/')[0]}.github.io/iklan/${fileName}`;
+      const fileUrl = `https://${repo.split('/')[0]}.github.io/${repo.split('/')[1]}/iklan/${fileName}`;
       resultDiv.innerHTML = `<p><strong>Berhasil upload!</strong></p><a href="${fileUrl}" target="_blank">${fileUrl}</a>`;
     } else {
       resultDiv.innerHTML = `<p style="color:red;">Gagal upload: ${data.message}</p>`;
