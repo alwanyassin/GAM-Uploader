@@ -82,10 +82,21 @@ async function uploadFile() {
 
     resultDiv.innerHTML = `
         <p><strong>Script HTML Iklan Siap Pakai:</strong></p>
-        <textarea style="width: 100%; height: 200px;">${htmlOutput}</textarea>
+        <textarea id="outputScript" style="width: 100%; height: 200px;">${htmlOutput}</textarea>
+        <button onclick="copyToClipboard()" style="margin-top: 10px;">Copy to Clipboard</button>
     `;
     }
 
   };
   reader.readAsDataURL(file);
+}
+
+function copyToClipboard() {
+  const outputTextarea = document.getElementById('outputScript');
+  outputTextarea.select();
+  outputTextarea.setSelectionRange(0, 99999); // For mobile devices
+
+  document.execCommand('copy');
+
+  alert('Script berhasil disalin ke clipboard!');
 }
