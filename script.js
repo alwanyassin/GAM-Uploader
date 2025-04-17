@@ -66,11 +66,26 @@ async function uploadFile() {
     const data = await res.json();
 
     if (res.ok) {
-      const fileUrl = `https://${repo.split('/')[0]}.github.io/${repo.split('/')[1]}/iklan/${fileName}`;
-      resultDiv.innerHTML = `<p><strong>Berhasil upload!</strong></p><a href="${fileUrl}" target="_blank">${fileUrl}</a>`;
-    } else {
-      resultDiv.innerHTML = `<p style="color:red;">Gagal upload: ${data.message}</p>`;
+    const repoName = repo.split('/')[1];
+    const fileUrl = `https://${repo.split('/')[0]}.github.io/${repoName}/iklan/${fileName}`;
+    
+    const selectedSize = document.getElementById('size').value;
+    const [w, h] = selectedSize.split('x');
+
+    const htmlOutput = `
+    <div style="width: ${w}px; height: ${h}px; overflow: hidden;">
+    <img 
+        src="${fileUrl}"
+        style="width: 100%; height: 100%; object-fit: cover; display: block;"
+        alt="IKLAN">
+    </div>`.trim();
+
+    resultDiv.innerHTML = `
+        <p><strong>Script HTML Iklan Siap Pakai:</strong></p>
+        <textarea style="width: 100%; height: 200px;">${htmlOutput}</textarea>
+    `;
     }
+
   };
   reader.readAsDataURL(file);
 }
