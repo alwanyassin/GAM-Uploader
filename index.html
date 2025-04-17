@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uploader Iklan ke GitHub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Uploader Iklan ke GitHub Pages</h1>
+
+    <div class="drop-zone" id="dropZone">Drop file di sini atau klik untuk pilih</div>
+    <input type="file" id="fileInput" hidden />
+
+    <input type="text" id="fileName" placeholder="Nama file, misal: iklan1.jpg" />
+    <input type="text" id="repo" placeholder="alwanyassin/alwanyassin.github.io" />
+    <input type="text" id="branch" placeholder="main (default)" />
+    <input type="password" id="token" placeholder="GitHub Personal Access Token" />
+
+    <button onclick="uploadFile()">Upload</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
