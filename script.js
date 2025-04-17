@@ -12,14 +12,23 @@ dropZone.addEventListener('dragleave', () => {
   dropZone.style.background = "";
 });
 
+function setAutoFileName(file) {
+  const originalName = file.name;
+  const cleanName = originalName.replace(/\s+/g, '-'); // ganti spasi dengan strip
+  document.getElementById('fileName').value = cleanName;
+  dropZone.innerText = cleanName;
+}
+
 dropZone.addEventListener('drop', (e) => {
   e.preventDefault();
+  const file = e.dataTransfer.files[0];
   fileInput.files = e.dataTransfer.files;
-  dropZone.innerText = fileInput.files[0].name;
+  setAutoFileName(file);
 });
 
 fileInput.addEventListener('change', () => {
-  dropZone.innerText = fileInput.files[0].name;
+  const file = fileInput.files[0];
+  setAutoFileName(file);
 });
 
 async function uploadFile() {
