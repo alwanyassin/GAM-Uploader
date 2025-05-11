@@ -74,10 +74,12 @@ async function uploadFile() {
 
     const htmlOutput = `
     <div style="width: ${w}px; height: ${h}px; overflow: hidden;">
+    <a href="%%CLICK_URL_UNESC%%(TAMBAH URL LANDING PAGE DI SINI)" target="_blank">
     <img 
         src="${fileUrl}"
         style="width: 100%; height: 100%; object-fit: cover; display: block;"
         alt="IKLAN">
+    </a>
     </div>`.trim();
 
     resultDiv.innerHTML = `
