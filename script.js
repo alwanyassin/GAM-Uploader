@@ -41,8 +41,23 @@ function setAutoFileName(file) {
   }
 
   const originalName = file.name;
+  
+  // Pisahkan nama file dan ekstensi
+  const lastDotIndex = originalName.lastIndexOf('.');
+  let baseName = originalName;
+  let extension = '';
+  
+  if (lastDotIndex !== -1) {
+    baseName = originalName.substring(0, lastDotIndex);
+    extension = originalName.substring(lastDotIndex);
+  }
+
+  // Tambahkan timestamp
+  const timestamp = Date.now();
+  const nameWithTime = `${baseName}-${timestamp}${extension}`;
+
   // Replace spaces and special chars with dash, keep extension
-  const cleanName = originalName.replace(/[^a-zA-Z0-9.]/g, '-').toLowerCase(); 
+  const cleanName = nameWithTime.replace(/[^a-zA-Z0-9.]/g, '-').toLowerCase(); 
   document.getElementById('fileName').value = cleanName;
   
   // Update dropzone text
